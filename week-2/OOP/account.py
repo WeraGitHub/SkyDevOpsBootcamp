@@ -1,21 +1,29 @@
 class Account:
-    number_created = 0
+    _number_created = 0
+
+    @classmethod
+    def get_account_count(cls):
+        return Account._number_created
 
     def __init__(self, opening_balance):
         self.__balance = opening_balance
         self._firstname = "Unknown"
         self._lastname = "Unknown lastname"
-        Account.number_created += 1
+        Account._number_created += 1
 
     # override the __str__ method
     def __str__(self):
         return f'Bank account has a balance ${self.__balance}'
 
     def __bool__(self):
-        if self.__balance > 0:
-            return True
-        else:
-            return False
+        # if self.__balance > 0:
+        #     return True
+        # else:
+        #     return False
+        return True if self.__balance > 0 else False
+
+    def __repr__(self):
+        return self.__str__()
 
     # reading
     def get_firstname(self):

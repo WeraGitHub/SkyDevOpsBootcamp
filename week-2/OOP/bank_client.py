@@ -23,7 +23,7 @@ print(lisa_account.get_balance())
 lisa_account.withdraw(30)
 print(lisa_account.get_balance())
 
-print(f'There are {Account.number_created} bank accounts.')
+print(f'There are {Account.get_account_count()} bank accounts.')
 
 
 print(lisa_account)
@@ -45,6 +45,8 @@ accounts = [lisa_account, bart_account]
 for account in accounts:
     print(account)
 
+print(accounts)  # this is possible thanks to overriding repr method in our class
+
 
 # java style getters and setters are methods
 
@@ -57,9 +59,8 @@ print(lisa_account.get_firstname())
 print(bart_account.get_firstname())
 
 
-# c style properties
+# c# style properties
 lisa_account.lastname = 'Simpson'
 print(lisa_account.lastname)
 bart_account.lastname = 'Simpson'
 print(bart_account.get_firstname() + " " + bart_account.lastname)
-

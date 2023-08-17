@@ -25,3 +25,15 @@ country_file_handler.seek(index[key])
 
 # print the line the pointer is at
 print(country_file_handler.readline().decode(), end="")
+
+
+while True:
+    # read one line from our file
+    line = country_file_handler.readline()
+    # break out of the loop if no line to read or if it is empty
+    if not line: break
+    # split our line into a list
+    fields = line.decode().split(',')
+    # Key: fields[0] (i.e. country name)
+    # Value: position of pointer at beginning of corresponding line
+    index[fields[0]] = country_file_handler.tell() - len(line)

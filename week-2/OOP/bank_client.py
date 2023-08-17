@@ -1,13 +1,14 @@
-# import the class
-# instantiate some objects - we call constructor
-# call some methods on the objects
+# import datetime modul
+from datetime import datetime
 
 # from module account import Class Account
 from account import Account
 
+from savings_account import SavingsAccount
+
 # instantiate bart's and lisa's accounts
-bart_account = Account(20)
-lisa_account = Account(500)
+bart_account = Account(20, '12-59-55', 1564589)
+lisa_account = Account(500, '01-02-03', 9999999)
 
 # call method deposit on the bart's account object
 print(bart_account.get_balance())
@@ -35,7 +36,7 @@ if lisa_account:
 else:
     print('False')
 
-negative_account = Account(-20)
+negative_account = Account(-20, '55-55-55', 89898989)
 if negative_account:
     print('True')
 else:
@@ -64,3 +65,29 @@ lisa_account.lastname = 'Simpson'
 print(lisa_account.lastname)
 bart_account.lastname = 'Simpson'
 print(bart_account.get_firstname() + " " + bart_account.lastname)
+
+
+print("\n\n")
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+print('#'*50)
+print('#'*50)
+print("\n\n")
+
+
+bob = SavingsAccount(0, '15-12-35', 56123456,  10)
+print(bob)
+print(bob.calculate_intrest())
+bob.deposit(100)
+print(bob)
+print(bob.calculate_intrest())
+
+print(bob.get_date_created())
+bob.deposit(-100)
+bob.deposit(10000)
+
+print(bob.get_balance())
+
+bob.withdraw(150000)
+bob.withdraw(500)
+print(bob.get_balance())

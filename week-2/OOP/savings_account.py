@@ -7,9 +7,9 @@ import datetime
 # create class SavingsAccount BASED on class Account
 class SavingsAccount(Account):
     # initiate class with the right arguments
-    def __init__(self, opening_balance, sortcode, account_number, intrest):
+    def __init__(self, opening_balance, sort_code, account_number, intrest):
         # call the initiator from the base class with it's arguments
-        super().__init__(opening_balance, sortcode, account_number)
+        super().__init__(opening_balance, sort_code, account_number)
         #
         self._date_created = datetime.date.today()
         self._intrest = intrest

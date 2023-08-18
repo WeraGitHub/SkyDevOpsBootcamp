@@ -1,5 +1,6 @@
 # import datetime modul
 from datetime import datetime
+from custom_exceptions import NegativeAmountError, InsufficientFundsError
 
 # from module account import Class Account
 from account import Account
@@ -83,11 +84,57 @@ print(bob)
 print(bob.calculate_intrest())
 
 print(bob.get_date_created())
-bob.deposit(-100)
+# bob.deposit(-100)
 bob.deposit(10000)
 
 print(bob.get_balance())
 
-bob.withdraw(150000)
+# bob.withdraw(150000)
 bob.withdraw(500)
 print(bob.get_balance())
+
+try:
+    bob.deposit(-100)
+except NegativeAmountError as err:
+    print(err)
+else:
+    print("Deposit completed")
+finally:
+    print("BYE\n")
+
+try:
+    bob.deposit(500)
+except NegativeAmountError as err:
+    print(err)
+else:
+    print("Deposit completed")
+finally:
+    print("BYE\n")
+
+try:
+    bob.withdraw(500000)
+except NegativeAmountError as err:
+    print(err)
+except InsufficientFundsError as err:
+    print(err)
+else:
+    print("Withdraw completed")
+finally:
+    print("BYE\n")
+
+try:
+    bob.withdraw(50)
+except NegativeAmountError as err:
+    print(err)
+except InsufficientFundsError as err:
+    print(err)
+else:
+    print("Withdraw completed")
+finally:
+    print("BYE\n")
+
+
+
+
+
+

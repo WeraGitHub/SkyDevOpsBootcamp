@@ -1,3 +1,6 @@
+from custom_exceptions import InsufficientFundsError, NegativeAmountError
+
+
 # create class Account
 class Account:
     # create a variable with a value of 0
@@ -10,12 +13,12 @@ class Account:
         return Account._number_created
 
     # initiate class with the right arguments
-    def __init__(self, opening_balance, sortcode, account_number):
+    def __init__(self, opening_balance, sort_code, account_number):
         # assign the arguments to it's properties
         self.__balance = opening_balance
         self._firstname = "Unknown"
         self._lastname = "Unknown lastname"
-        self._sortcode = sortcode
+        self._sort_code = sort_code
         self._account_number = account_number
         Account._number_created += 1
 
@@ -59,23 +62,32 @@ class Account:
     def get_balance(self):
         return self.__balance
 
-    # method to allow money deposits
+    # method to deposit money into our account
     def deposit(self, amount):
-        # validate that user is depositing a positive amount
-        if amount > 0:
-            self.__balance += amount
-        # otherwise print warning
+        # validate that user is depositing an allowable amount
+        if amount <= 0:
+            raise NegativeAmountError("You can't deposit that!!!!")
         else:
-            print("You can't deposit that!!!!")
+            self.__balance += amount
 
     # define a method to withdraw the monies
+    # def withdraw(self, amount):
+    #     # check if user has enough money in the account to facilitate the withdrawal
+    #     if self.__balance > amount:
+    #         self.__balance -= amount
+    #     # otherwise print warning
+    #     else:
+    #         print("Insufficient funds")
+
+    # withdraw method with incorporated exception raising
     def withdraw(self, amount):
-        # check if user has enough money in the account to facilitate the withdrawal
-        if self.__balance > amount:
-            self.__balance -= amount
-        # otherwise print warning
+        if amount <= 0:
+            raise NegativeAmountError("The amount you are trying to withdraw is...WRONG")
+        if self.__balance < amount:
+            raise InsufficientFundsError("Insufficient funds Error")
         else:
-            print("Insufficient funds")
+            self.__balance -= amount
+
 
 
 # encapsulation

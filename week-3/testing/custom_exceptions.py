@@ -1,0 +1,3 @@
+class WrongPayRaisePercentError(Exception):
+    pass
+
